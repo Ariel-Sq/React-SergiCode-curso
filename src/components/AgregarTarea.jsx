@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const AgregarTarea = () => {
+export const AgregarTarea = ({ agregarTarea }) => {
 
   const [inputValue, setInputValue] = useState('')
 
@@ -8,12 +8,23 @@ export const AgregarTarea = () => {
     setInputValue(event.target.value)
   }
 
+  const onSubmit = (event) => {
+    const envio = {
+        nombre: inputValue,
+        visto: false
+    }
+    event.preventDefault()
+    agregarTarea(tareas => [...tareas, envio])
+  }
+
   return (
-    <input
-        type="text"
-        placeholder="Ingresa tarea nueva"
-        value={inputValue}
-        onChange={onInputChange}
-    />
+    <form onSubmit={onSubmit}>
+        <input
+            type="text"
+            placeholder="Ingresa tarea nueva"
+            value={inputValue}
+            onChange={onInputChange}
+        />
+    </form>
   )
 }

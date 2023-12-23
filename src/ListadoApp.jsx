@@ -30,7 +30,7 @@ export const ListadoApp = () => {
     return (
         <>
         <h1>Listado de temas del curso</h1>
-        <AgregarTarea></AgregarTarea>
+        <AgregarTarea agregarTarea={setArreglo}></AgregarTarea>
         <ol>
             {arreglo.map(item => <Item key={item.nombre} nombre={item.nombre} visto={item.visto}></Item>)}
         </ol>
